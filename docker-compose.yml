@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  agent:
+    image: alpine:latest
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: ["echo", "demonstration sentinel"]
+
+  db_pg:
+    image: postgres:15-alpine
+
+  db_mysql:
+    image: mysql:8.0
+
+  cache:
+    image: redis:7-alpine
+
+  queue_rabbit:
+    image: rabbitmq:3-management
+
+  queue_kafka:
+    image: confluentinc/cp-kafka:7.0.1
+
+  search:
+    image: elasticsearch:8.6.0
